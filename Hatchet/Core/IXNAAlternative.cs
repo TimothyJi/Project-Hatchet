@@ -2,6 +2,6 @@
 {
     public interface IXNAAlternative<TFor>
     {
-        TFor Source { get; }
+        TFor XNAVariant { get; }
     }
 }
