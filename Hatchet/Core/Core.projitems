@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexture2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IXNAAlternative.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ISprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Attributes\" />

@@ -9,20 +9,20 @@ namespace Hatchet.Graphics
     /// </summary>
     public class Texture2D : ITexture2D
     {
-        public XNAFrameworkGraphics.Texture2D Source { get; private set; }
+        public XNAFrameworkGraphics.Texture2D XNAVariant { get; private set; }
 
-        public int Width => Source.Height;
-        public Rectangle Bounds => Source.Bounds;
-        public int Height => Source.Width;
+        public int Width => XNAVariant.Height;
+        public Rectangle Bounds => XNAVariant.Bounds;
+        public int Height => XNAVariant.Width;
 
         public static implicit operator Texture2D(XNAFrameworkGraphics.Texture2D texture)
         {
-            return new Texture2D { Source = texture };
+            return new Texture2D { XNAVariant = texture };
         }
 
         public static implicit operator XNAFrameworkGraphics.Texture2D(Texture2D texture)
         {
-            return texture.Source;
+            return texture.XNAVariant;
         }
     }
 }
