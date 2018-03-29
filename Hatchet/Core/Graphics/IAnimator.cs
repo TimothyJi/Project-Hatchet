@@ -7,7 +7,7 @@ namespace Hatchet.Graphics
         IAnimation CurrentAnimation { get; }
 
         int CurrentFrameIndex { get; }
-        ITexturedFrame CurrentFrame { get; }
+        IFrame CurrentFrame { get; }
 
         float TimeElasped { get; }
 

@@ -19,10 +19,10 @@ namespace Hatchet.Graphics
 
         public bool IsActive { get; set; }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (IsActive)
-                spriteBatch.Draw(Texture as Texture2D, Position, SourceRect, Color * Alpha, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+                spriteBatch.Draw((Texture2D)Texture, Position, SourceRect, Color * Alpha, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hatchet.Graphics
         public IAnimation CurrentAnimation { get; private set; }
 
         public int CurrentFrameIndex { get; private set; }
-        public ITexturedFrame CurrentFrame => CurrentAnimation.Frames[CurrentFrameIndex];
+        public IFrame CurrentFrame => CurrentAnimation.Frames[CurrentFrameIndex];
 
         public bool IsPlaying { get; private set; }
 

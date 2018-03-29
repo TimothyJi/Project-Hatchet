@@ -24,5 +24,20 @@ namespace Hatchet.Graphics
         {
             return texture.XNAVariant;
         }
+
+        public override bool Equals(object obj)
+        {
+            return XNAVariant.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return XNAVariant.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return XNAVariant.ToString();
+        }
     }
 }

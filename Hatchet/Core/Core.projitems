@@ -9,11 +9,13 @@
     <Import_RootNamespace>Hatchet</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\IFrameContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ICustomFrame.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexturedFrame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrameBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexture2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITextureSplicer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IXNAAlternative.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ISprite.cs" />
   </ItemGroup>

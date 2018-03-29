@@ -2,7 +2,7 @@
 
 namespace Hatchet.Graphics
 {
-    public interface IFrame
+    public interface IFrameBase
     {
         Rectangle SourceRect { get; }
         float FrameDuration { get; }

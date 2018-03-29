@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Graphics\AnimatedSprite.cs" />
     <Compile Include="Graphics\Animator.cs" />
+    <Compile Include="Graphics\Collections\FrameContainer.cs" />
+    <Compile Include="Graphics\Frame.cs" />
     <Compile Include="Graphics\Texture2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Graphics\Sprite.cs" />

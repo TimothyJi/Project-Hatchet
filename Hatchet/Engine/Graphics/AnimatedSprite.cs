@@ -6,7 +6,7 @@ namespace Hatchet.Graphics
     {
         public IAnimation Animation => Animator.CurrentAnimation;
         public IAnimator Animator { get; private set; }
-
+        
         public override Rectangle SourceRect => Animator.CurrentFrame.SourceRect;
         
         public bool Play(IAnimation animation)
@@ -18,5 +18,7 @@ namespace Hatchet.Graphics
         {
             Animator.Update(gameTime);
         }
+
+
     }
 }

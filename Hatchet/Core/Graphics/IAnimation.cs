@@ -1,8 +1,10 @@
-﻿namespace Hatchet.Graphics
+﻿using Hatchet.Graphics.Collections;
+
+namespace Hatchet.Graphics
 {
     public interface IAnimation
     {
-        ITexturedFrame[] Frames { get; }
+        IFrameContainer Frames { get; }
         bool Loop { get; }
     }
 }
