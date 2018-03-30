@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace Hatchet.Graphics.Collections
 {
     public interface IFrameCollection
     {
-        List<IFrame> Frames { get; }
+        Collection<IFrame> Frames { get; }
 
         void Initialize();
     }

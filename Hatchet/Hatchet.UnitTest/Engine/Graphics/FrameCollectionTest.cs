@@ -4,6 +4,7 @@ using Hatchet.Graphics.Collections.XML;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Hatchet.UnitTest.Engine.Graphics
 {
@@ -17,7 +18,7 @@ namespace Hatchet.UnitTest.Engine.Graphics
             dur.Add(1, 2f);
             Point size = new Point();
             size.X = 32; size.Y = 32;
-            IFrameCollection frameContainer = new EquallySizedFrameCollectior() { Frames = new List<IFrame>(), DefaultDuration = 1, Size = size, DurationOverride = dur, Texture = new MockTexture2D() { Height = 64, Width = 64 } };
+            IFrameCollection frameContainer = new EquallySizedFrameCollectior() { Frames = new Collection<IFrame>(), DefaultDuration = 1, Size = size, DurationOverride = dur, Texture = new MockTexture2D() { Height = 64, Width = 64 } };
 
             frameContainer.Initialize();
 

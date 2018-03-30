@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework.Content;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Hatchet.Graphics.Collections.XML
 {
     public class FrameCollection : IFrameCollection
     {
         [ContentSerializer(ElementName = "Frames", CollectionItemName = "Frame")]
-        public List<IFrame> Frames { get; set; }
+        public Collection<IFrame> Frames { get; set; }
 
         public void Initialize() { }
     }

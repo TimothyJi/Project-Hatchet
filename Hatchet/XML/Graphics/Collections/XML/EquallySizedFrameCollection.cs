@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Hatchet.Graphics.Collections.XML
 {
     public class EquallySizedFrameCollectior : IFrameCollection
     {
         [ContentSerializerIgnore]
-        public List<IFrame> Frames { get; set; }
+        public Collection<IFrame> Frames { get; set; }
 
         public ITexture2D Texture { get; set; }
         public Point Size { get; set; }

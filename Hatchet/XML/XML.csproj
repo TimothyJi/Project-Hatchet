@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\Collections\XML\EquallySizedFrameContainer.cs" />
-    <Compile Include="Graphics\Collections\XML\FrameContainer.cs" />
+    <Compile Include="Graphics\Collections\XML\EquallySizedFrameCollection.cs" />
+    <Compile Include="Graphics\Collections\XML\FrameCollection.cs" />
     <Compile Include="Graphics\XML\Frame.cs" />
     <Compile Include="Graphics\XML\OptionalTextureFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

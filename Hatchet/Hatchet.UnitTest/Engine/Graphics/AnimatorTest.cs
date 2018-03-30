@@ -3,6 +3,7 @@ using Hatchet.Graphics.Collections;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Hatchet.UnitTest.Engine.Graphics
 {
@@ -73,7 +74,7 @@ namespace Hatchet.UnitTest.Engine.Graphics
         
         public static IFrameCollection ToFrameContainer(IFrameBase[] frameArray)
         {
-            IFrameCollection container = new Hatchet.Graphics.Collections.XML.FrameCollection() { Frames = new System.Collections.Generic.List<IFrame>() };
+            IFrameCollection container = new Hatchet.Graphics.Collections.XML.FrameCollection() { Frames = new Collection<IFrame>() };
             foreach (var frame in frameArray)
             {
                 container.Add(new Hatchet.Graphics.XML.Frame(null, frame.SourceRect, frame.Duration));
