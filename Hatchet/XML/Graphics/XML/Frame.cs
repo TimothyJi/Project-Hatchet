@@ -3,13 +3,21 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Hatchet.Graphics.XML
 {
-    public class OptionalTextureFrame : IFrame
+    public struct Frame : IFrame
     {
-        [ContentSerializer(Optional = true)]
+        [ContentSerializer(Optional = true, AllowNull = true)]
         public ITexture2D Texture { get; set; }
+
         [ContentSerializer(ElementName = "Rectangle")]
         public Rectangle SourceRect { get; set; }
-        [ContentSerializer(ElementName = "Duration")]
+        
         public float Duration { get; set; }
+
+        public Frame(ITexture2D texture, Rectangle sourceRect, float duration)
+        {
+            Texture = texture;
+            SourceRect = sourceRect;
+            Duration = duration;
+        }
     }
 }

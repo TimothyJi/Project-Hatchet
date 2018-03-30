@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexturedFrame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrameBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexture2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITextureSplicer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IXNAAlternative.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ISprite.cs" />
   </ItemGroup>

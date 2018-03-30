@@ -2,9 +2,23 @@
 
 namespace Hatchet.Graphics.Collections
 {
-    public interface IFrameContainer
+    public interface IFrameCollection
     {
-        ITexture2D DefaultTexture { get; }
         List<IFrame> Frames { get; }
+
+        void Initialize();
+    }
+
+    public static class FrameContainerExtensions
+    {
+        public static void Add(this IFrameCollection container, IFrame frame)
+        {
+            container.Frames.Add(frame);
+        }
+
+        public static int GetLength(this IFrameCollection container)
+        {
+            return container.Frames.Count;
+        }
     }
 }

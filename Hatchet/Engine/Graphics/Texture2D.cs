@@ -7,7 +7,7 @@ namespace Hatchet.Graphics
     /// Uses Microsoft.Xna.Framework.Graphics.Texture2D internally.
     /// Created to be more easily Mockable for testing purposes.
     /// </summary>
-    public class Texture2D : ITexture2D
+    public struct Texture2D : ITexture2D
     {
         public XNAFrameworkGraphics.Texture2D XNAVariant { get; private set; }
 

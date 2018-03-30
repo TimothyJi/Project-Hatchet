@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Hatchet.Graphics.Collections;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace Hatchet.Graphics
@@ -8,7 +9,7 @@ namespace Hatchet.Graphics
         public IAnimation CurrentAnimation { get; private set; }
 
         public int CurrentFrameIndex { get; private set; }
-        public IFrame CurrentFrame => CurrentAnimation.Frames[CurrentFrameIndex];
+        public IFrame CurrentFrame => ((FrameCollection)(CurrentAnimation.FrameContainer))[CurrentFrameIndex];
 
         public bool IsPlaying { get; private set; }
 
@@ -20,6 +21,9 @@ namespace Hatchet.Graphics
                 CurrentAnimation = animation ?? throw new ArgumentNullException();
             else
                 return false;
+            if (animation.FrameContainer.Frames == null)
+                throw new NullReferenceException("Frames are null.");
+
             return Reset();
         }
 
@@ -48,16 +52,16 @@ namespace Hatchet.Graphics
                 throw new NullReferenceException("Cannot play a null Animation");
 
             TimeElasped += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (TimeElasped > CurrentFrame.FrameDuration)
+            while (TimeElasped > CurrentFrame.Duration)
             {
-                TimeElasped -= CurrentFrame.FrameDuration;
+                TimeElasped -= CurrentFrame.Duration;
 
                 if (CurrentAnimation.Loop)
-                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.Frames.Length;
+                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.GetLength();
                 else
                 {
-                    CurrentFrameIndex = Math.Min(CurrentFrameIndex, CurrentAnimation.Frames.Length);
-                    if (CurrentFrameIndex >= CurrentAnimation.Frames.Length)
+                    CurrentFrameIndex = Math.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.GetLength());
+                    if (CurrentFrameIndex >= CurrentAnimation.FrameContainer.GetLength())
                     {
                         IsPlaying = false;
                         break;

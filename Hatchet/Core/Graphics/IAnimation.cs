@@ -4,7 +4,7 @@ namespace Hatchet.Graphics
 {
     public interface IAnimation
     {
-        IFrameContainer Frames { get; }
+        IFrameCollection FrameContainer { get; }
         bool Loop { get; }
     }
 }

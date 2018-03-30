@@ -1,14 +1,20 @@
 ﻿using Hatchet.Graphics;
+using Hatchet.Graphics.Collections;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;
 
 namespace Hatchet.UnitTest.Engine.Graphics
 {
-
     [TestFixture]
     public class AnimatorTest
     {
+        [Test]
+        public void Animator_PlayNullAnimation_ThrowsArgumentNullExceptioN()
+        {
+            Assert.Throws<ArgumentNullException>(() => MockObjects.NewAnimator.Play(null));
+        }
+
         [Test]
         public void Animator_PlayEmptyAnimation_ThrowsNullReferenceException()
         {
@@ -61,14 +67,24 @@ namespace Hatchet.UnitTest.Engine.Graphics
         public static IAnimation emptyAnimation;
         public static IAnimation EmptyAnimation { get { if (emptyAnimation == null) emptyAnimation = new MockAnimation(); return emptyAnimation; } }
         static IAnimation basicAnimation;
-        public static IAnimation BasicAnimation { get { if (basicAnimation == null) basicAnimation = new MockAnimation() { Frames = new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, FrameDuration = 1f } } }; return basicAnimation; } }
+        public static IAnimation BasicAnimation { get { if (basicAnimation == null) basicAnimation = new MockAnimation() { FrameContainer = ToFrameContainer(new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 1f } }) }; return basicAnimation; } }
         static IAnimation alternativeAnimation;
-        public static IAnimation AlternativeAnimation { get { if (alternativeAnimation == null) alternativeAnimation = new MockAnimation() { Frames = new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, FrameDuration = 0.5f } }, Loop = true }; return alternativeAnimation; } }
+        public static IAnimation AlternativeAnimation { get { if (alternativeAnimation == null) alternativeAnimation = new MockAnimation() { FrameContainer = ToFrameContainer(new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 0.5f } }), Loop = true }; return alternativeAnimation; } }
+        
+        public static IFrameCollection ToFrameContainer(IFrameBase[] frameArray)
+        {
+            IFrameCollection container = new Hatchet.Graphics.Collections.XML.FrameCollection() { Frames = new System.Collections.Generic.List<IFrame>() };
+            foreach (var frame in frameArray)
+            {
+                container.Add(new Hatchet.Graphics.XML.Frame(null, frame.SourceRect, frame.Duration));
+            }
+            return container;
+        }
     }
 
     public class MockAnimation : IAnimation
     {
-        public IFrameBase[] Frames { get; set; }
+        public IFrameCollection FrameContainer { get; set; }
 
         public bool Loop { get; set; }
     }
@@ -76,6 +92,6 @@ namespace Hatchet.UnitTest.Engine.Graphics
     public class MockFrame : IFrameBase
     {
         public Rectangle SourceRect { get; set; }
-        public float FrameDuration { get; set; }
+        public float Duration { get; set; }
     }
 }

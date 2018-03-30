@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Hatchet.Graphics.Collections.XML
 {
-    public class FrameContainer : IFrameContainer
+    public class FrameCollection : IFrameCollection
     {
-        public ITexture2D DefaultTexture { get; set; }
         [ContentSerializer(ElementName = "Frames", CollectionItemName = "Frame")]
-        public List<IFrame> Frames { get; set; } 
+        public List<IFrame> Frames { get; set; }
+
+        public void Initialize() { }
     }
 }

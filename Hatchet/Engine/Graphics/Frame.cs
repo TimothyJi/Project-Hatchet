@@ -2,10 +2,10 @@
 
 namespace Hatchet.Graphics
 {
-    public class Frame : IFrame
+    public struct Frame : IFrame
     {
         public ITexture2D Texture { get; set; }
         public Rectangle SourceRect { get; set; }
-        public float FrameDuration { get; set; }
+        public float Duration { get; set; }
     }
 }
