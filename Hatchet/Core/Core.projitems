@@ -9,6 +9,7 @@
     <Import_RootNamespace>Hatchet</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\FrameCollectionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\IFrameCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimator.cs" />

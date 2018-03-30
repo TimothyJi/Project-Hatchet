@@ -3,15 +3,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace Hatchet.Graphics.Collections.XML
 {
-    public class EquallySizedFrameCollectior : IFrameCollection
+    public class EquallySizedFrameCollection : FrameCollectionBase
     {
-        [ContentSerializerIgnore]
-        public Collection<IFrame> Frames { get; set; }
-
         public ITexture2D Texture { get; set; }
         public Point Size { get; set; }
         public float DefaultDuration { get; set; }
@@ -19,7 +15,7 @@ namespace Hatchet.Graphics.Collections.XML
         [ContentSerializer(ElementName = "Durations", CollectionItemName = "Override")]
         public Dictionary<int, float> DurationOverride { get; set; }
 
-        public void Initialize()
+        public override void Initialize()
         {
             int columns = Texture.Width / Size.X;
             int rows = Texture.Height / Size.Y;
@@ -32,7 +28,7 @@ namespace Hatchet.Graphics.Collections.XML
                 Point loc = new Point(x, y);
                 IFrame frame = new Frame(Texture, new Rectangle(loc, Size), DurationOverride.ContainsKey(index) ? DurationOverride[index] : DefaultDuration);
 
-                Frames.Add(frame);
+                Add(frame);
             }
         }
     }

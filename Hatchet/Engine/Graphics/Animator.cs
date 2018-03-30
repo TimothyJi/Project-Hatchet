@@ -21,7 +21,7 @@ namespace Hatchet.Graphics
                 CurrentAnimation = animation ?? throw new ArgumentNullException();
             else
                 return false;
-            if (animation.FrameContainer.Frames == null)
+            if (animation.FrameContainer == null)
                 throw new NullReferenceException("Frames are null.");
 
             return Reset();
@@ -57,11 +57,11 @@ namespace Hatchet.Graphics
                 TimeElasped -= CurrentFrame.Duration;
 
                 if (CurrentAnimation.Loop)
-                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.GetLength();
+                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.Count;
                 else
                 {
-                    CurrentFrameIndex = Math.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.GetLength());
-                    if (CurrentFrameIndex >= CurrentAnimation.FrameContainer.GetLength())
+                    CurrentFrameIndex = Math.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.Count);
+                    if (CurrentFrameIndex >= CurrentAnimation.FrameContainer.Count)
                     {
                         IsPlaying = false;
                         break;
