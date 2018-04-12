@@ -9,6 +9,8 @@
     <Import_RootNamespace>Hatchet</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ContentLoader\IHasContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentLoader\ILoadContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\FrameCollectionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\IFrameCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimation.cs" />
@@ -16,6 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexturedFrame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrameBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexture2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Screen\IScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Screen\ScreenStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\IGenericInputManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\IInputManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IXNAAlternative.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ISprite.cs" />
   </ItemGroup>
