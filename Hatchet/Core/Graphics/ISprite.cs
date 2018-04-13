@@ -3,10 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics
 {
-    public interface ISprite : IPositionable, IRotatable, IScalable, ITextured
+    public interface ISprite : IHasTransparency, ITextured, IPositionable, IRotatable, IScalable
     {
-        float Alpha { get; }
-        
         Rectangle SourceRect { get; set; }
         Color Color { get; set; }
         SpriteEffects SpriteEffects { get; set; }
