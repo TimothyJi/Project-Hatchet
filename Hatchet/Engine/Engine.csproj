@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\AnimatedSprite.cs" />
+    <Compile Include="Graphics\AnimatableSprite.cs" />
     <Compile Include="Graphics\Animator.cs" />
     <Compile Include="Graphics\Collections\FrameCollection.cs" />
     <Compile Include="Graphics\Frame.cs" />

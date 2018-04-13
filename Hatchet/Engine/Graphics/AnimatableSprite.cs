@@ -2,7 +2,7 @@
 
 namespace Hatchet.Graphics
 {
-    public class AnimatedSprite : Sprite
+    public class AnimatableSprite : Sprite
     {
         public IAnimation Animation => Animator.CurrentAnimation;
         public IAnimator Animator { get; private set; }
