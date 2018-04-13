@@ -81,25 +81,6 @@ namespace Hatchet.Input
                     return false;
             }
         }
-        public static bool IsReleased(this IGenericInputManager<MouseState> m, MouseInput input)
-        {
-            switch (input)
-            {
-                case MouseInput.LeftButton:
-                    return m.State.LeftButton == ButtonState.Released;
-                case MouseInput.MiddleButton:
-                    return m.State.MiddleButton == ButtonState.Released;
-                case MouseInput.RightButton:
-                    return m.State.RightButton == ButtonState.Released;
-                case MouseInput.XButton1:
-                    return m.State.XButton1 == ButtonState.Released;
-                case MouseInput.XButton2:
-                    return m.State.XButton2 == ButtonState.Released;
-
-                default:
-                    return false;
-            }
-        }
         public static Point GetPosition(this IGenericInputManager<MouseState> m) => m.State.Position;
         public static int GetScroll(this IGenericInputManager<MouseState> m) => m.PreviousState.ScrollWheelValue - m.State.ScrollWheelValue;   
         public static bool HasMouseMoved(this IGenericInputManager<MouseState> m) => m.PreviousState.Position != m.State.Position;
