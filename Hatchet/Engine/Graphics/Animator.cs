@@ -1,4 +1,5 @@
-﻿using Hatchet.Graphics.Collections;
+﻿using Hatchet.GameLoop;
+using Hatchet.Graphics.Collections;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -13,7 +14,8 @@ namespace Hatchet.Graphics
 
         public bool IsPlaying { get; private set; }
 
-        public float TimeElasped { get; private set; }
+        public TimeKeeper TimeElapsed { get; private set; }
+        ITimeKeeper IAnimator.TimeElapsed => TimeElapsed;
 
         public bool Play(IAnimation animation)
         {
@@ -38,7 +40,7 @@ namespace Hatchet.Graphics
                 return false;
 
             CurrentFrameIndex = 0;
-            TimeElasped = 0;
+            TimeElapsed.Restart();
             IsPlaying = true;
 
             return true;
@@ -51,10 +53,10 @@ namespace Hatchet.Graphics
             else if (CurrentAnimation == null)
                 throw new NullReferenceException("Cannot play a null Animation");
 
-            TimeElasped += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (TimeElasped > CurrentFrame.Duration)
+            TimeElapsed.Update(gameTime);
+            while (TimeElapsed.ElapsedTimeInSeconds > CurrentFrame.Duration)
             {
-                TimeElasped -= CurrentFrame.Duration;
+                TimeElapsed.ElapsedTimeInSeconds -= CurrentFrame.Duration;
 
                 if (CurrentAnimation.Loop)
                     CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.Count;

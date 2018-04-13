@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameLoop\TimeKeeper.cs" />
     <Compile Include="Graphics\AnimatableSprite.cs" />
     <Compile Include="Graphics\Animator.cs" />
     <Compile Include="Graphics\Collections\FrameCollection.cs" />

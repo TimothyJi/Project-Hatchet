@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Hatchet.GameLoop;
+using Microsoft.Xna.Framework;
 
 namespace Hatchet.Graphics
 {
@@ -9,7 +10,7 @@ namespace Hatchet.Graphics
         int CurrentFrameIndex { get; }
         IFrame CurrentFrame { get; }
 
-        float TimeElasped { get; }
+        ITimeKeeper TimeElapsed { get; }
 
         bool IsPlaying { get; }
         bool Play(IAnimation animation);
