@@ -9,7 +9,7 @@
     <Import_RootNamespace>Hatchet</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ContentLoader\IHasContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentLoader\IHasOwnContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContentLoader\ILoadContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\FrameCollectionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\IFrameCollection.cs" />
