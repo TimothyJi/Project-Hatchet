@@ -1,7 +1,6 @@
 ﻿namespace Hatchet.Graphics
 {
-    public interface IFrame : IFrameBase
+    public interface IFrame : IFrameBase, ITextured
     {
-        ITexture2D Texture { get; }
     }
 }

@@ -15,6 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Collections\IFrameCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITextured.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IPositionable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IRotatable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IScaleable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexturedFrame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrameBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\ITexture2D.cs" />
