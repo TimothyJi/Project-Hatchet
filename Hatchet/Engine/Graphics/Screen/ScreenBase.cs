@@ -14,7 +14,7 @@ namespace Hatchet.Graphics.Screen
 
         public virtual void LoadContent(ContentManager content)
         {
-            Content = new ContentManager(content.ServiceProvider);
+            Content = new ContentManager(content.ServiceProvider, "Content");
         }
 
         public void UnloadContent()
