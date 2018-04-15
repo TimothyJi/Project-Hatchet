@@ -2,6 +2,6 @@
 {
     public interface ITextured
     {
-        ITexture2D Texture { get; set; }
+        IHatchetTexture2D Texture { get; set; }
     }
 }

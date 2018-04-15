@@ -54,7 +54,7 @@
     <Compile Include="Graphics\Collections\FrameCollection.cs" />
     <Compile Include="Graphics\Frame.cs" />
     <Compile Include="Graphics\Screen\ScreenBase.cs" />
-    <Compile Include="Graphics\Texture2D.cs" />
+    <Compile Include="Graphics\HatchetTexture2D.cs" />
     <Compile Include="Input\GenericInputManager.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

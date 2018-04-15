@@ -8,7 +8,7 @@ namespace Hatchet.Graphics.Collections.XML
 {
     public class EquallySizedFrameCollection : FrameCollectionBase
     {
-        public ITexture2D Texture { get; set; }
+        public IHatchetTexture2D Texture { get; set; }
         public Point Size { get; set; }
         public float DefaultDuration { get; set; }
 

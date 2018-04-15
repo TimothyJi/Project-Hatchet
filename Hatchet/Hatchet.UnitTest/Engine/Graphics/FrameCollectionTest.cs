@@ -27,7 +27,7 @@ namespace Hatchet.UnitTest.Engine.Graphics
             Assert.IsTrue(frameContainer[0].Duration == 1f && frameContainer[1].Duration == 2f && frameContainer[2].Duration == 1f && frameContainer.Count == 4);
         }
 
-        public class MockTexture2D : ITexture2D
+        public class MockTexture2D : IHatchetTexture2D
         {
             public int Width { get; set; }
             public Rectangle Bounds { get; set; }

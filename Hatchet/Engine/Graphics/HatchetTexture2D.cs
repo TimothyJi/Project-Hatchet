@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using XNAFrameworkGraphics = Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics
 {
@@ -7,20 +7,20 @@ namespace Hatchet.Graphics
     /// Uses Microsoft.Xna.Framework.Graphics.Texture2D internally.
     /// Created to be more easily Mockable for testing purposes.
     /// </summary>
-    public struct Texture2D : ITexture2D
+    public class HatchetTexture2D : IHatchetTexture2D
     {
-        public XNAFrameworkGraphics.Texture2D XNAVariant { get; private set; }
+        public Texture2D XNAVariant { get; private set; }
 
-        public int Width => XNAVariant.Height;
+        public int Width => XNAVariant.Width;
         public Rectangle Bounds => XNAVariant.Bounds;
-        public int Height => XNAVariant.Width;
+        public int Height => XNAVariant.Height;
 
-        public static implicit operator Texture2D(XNAFrameworkGraphics.Texture2D texture)
+        public static implicit operator HatchetTexture2D(Texture2D texture)
         {
-            return new Texture2D { XNAVariant = texture };
+            return new HatchetTexture2D { XNAVariant = texture };
         }
 
-        public static implicit operator XNAFrameworkGraphics.Texture2D(Texture2D texture)
+        public static implicit operator Texture2D(HatchetTexture2D texture)
         {
             return texture.XNAVariant;
         }

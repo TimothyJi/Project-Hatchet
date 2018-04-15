@@ -6,7 +6,7 @@ namespace Hatchet.Graphics.XML
     public class OptionalTextureFrame : IFrame
     {
         [ContentSerializer(Optional = true)]
-        public ITexture2D Texture { get; set; }
+        public IHatchetTexture2D Texture { get; set; }
         [ContentSerializer(ElementName = "Rectangle")]
         public Rectangle SourceRect { get; set; }
         [ContentSerializer(ElementName = "Duration")]

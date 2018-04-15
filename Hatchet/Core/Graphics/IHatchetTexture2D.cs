@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using XNAFrameworkGraphics = Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics
 {
-    public interface ITexture2D : IXNAAlternative<XNAFrameworkGraphics.Texture2D>
+    public interface IHatchetTexture2D : IAlternative<Texture2D>
     {
         int Width { get; }
         Rectangle Bounds { get; }

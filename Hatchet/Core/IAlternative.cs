@@ -1,6 +1,6 @@
 ﻿namespace Hatchet
 {
-    public interface IXNAAlternative<TFor>
+    public interface IAlternative<TFor>
     {
         TFor XNAVariant { get; }
     }

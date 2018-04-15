@@ -54,9 +54,9 @@ namespace Hatchet.Graphics
                 throw new NullReferenceException("Cannot play a null Animation");
 
             TimeElapsed.Update(gameTime);
-            while (TimeElapsed.ElapsedTimeInSeconds > CurrentFrame.Duration)
+            while (TimeElapsed.AsSeconds > CurrentFrame.Duration)
             {
-                TimeElapsed.ElapsedTimeInSeconds -= CurrentFrame.Duration;
+                TimeElapsed.AsSeconds -= CurrentFrame.Duration;
 
                 if (CurrentAnimation.Loop)
                     CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.Count;

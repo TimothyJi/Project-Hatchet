@@ -4,13 +4,13 @@ namespace Hatchet.GameLoop
 {
     public class TimeKeeper : ITimeKeeper
     {
-        public float ElapsedTimeInMilliseconds { get; private set; }
-        public float ElapsedTimeInSeconds { get => ElapsedTimeInMilliseconds / 1000; set => ElapsedTimeInMilliseconds = value * 1000; }
-        public float ElapsedTimeInMinutes { get => ElapsedTimeInMilliseconds / 60000; set => ElapsedTimeInMilliseconds = value * 60000; }
-        public float ElapsedTimeInHours { get => ElapsedTimeInMilliseconds / 3600000; set => ElapsedTimeInMilliseconds = value * 3600000; }
-        public float ElapsedTimeInDays { get => ElapsedTimeInMilliseconds / 86400000; set => ElapsedTimeInMilliseconds = value * 86400000; }
+        public float AsMilliseconds { get; private set; }
+        public float AsSeconds { get => AsMilliseconds / 1000; set => AsMilliseconds = value * 1000; }
+        public float AsMinutes { get => AsMilliseconds / 60000; set => AsMilliseconds = value * 60000; }
+        public float AsHours { get => AsMilliseconds / 3600000; set => AsMilliseconds = value * 3600000; }
+        public float AsDays { get => AsMilliseconds / 86400000; set => AsMilliseconds = value * 86400000; }
 
-        public void Update(GameTime gameTime) => ElapsedTimeInMilliseconds += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-        public void Restart() => ElapsedTimeInMilliseconds = 0;
+        public void Update(GameTime gameTime) => AsMilliseconds += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+        public void Restart() => AsMilliseconds = 0;
     }
 }

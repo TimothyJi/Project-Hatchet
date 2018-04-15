@@ -4,11 +4,11 @@ namespace Hatchet.GameLoop
 {
     public interface ITimeKeeper
     {
-        float ElapsedTimeInDays { get; }
-        float ElapsedTimeInHours { get; }
-        float ElapsedTimeInMilliseconds { get; }
-        float ElapsedTimeInMinutes { get; }
-        float ElapsedTimeInSeconds { get; }
+        float AsDays { get; }
+        float AsHours { get; }
+        float AsMinutes { get; }
+        float AsSeconds { get; }
+        float AsMilliseconds { get; }
 
         void Restart();
         void Update(GameTime gameTime);
