@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hatchet</RootNamespace>
     <AssemblyName>Hatchet</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +53,7 @@
     <Compile Include="Graphics\Animator.cs" />
     <Compile Include="Graphics\Collections\FrameCollection.cs" />
     <Compile Include="Graphics\Frame.cs" />
-    <Compile Include="Graphics\Screen\Screen.cs" />
+    <Compile Include="Graphics\Screen\ScreenBase.cs" />
     <Compile Include="Graphics\Texture2D.cs" />
     <Compile Include="Input\GenericInputManager.cs" />
     <Compile Include="Input\InputManager.cs" />

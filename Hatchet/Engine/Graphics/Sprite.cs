@@ -5,7 +5,7 @@ namespace Hatchet.Graphics
 {
     public class Sprite : ISprite
     {
-        public float Alpha { get; }
+        public float Alpha { get; set; }
 
         public virtual ITexture2D Texture { get; set; }
         public virtual Vector2 Position { get; set; }

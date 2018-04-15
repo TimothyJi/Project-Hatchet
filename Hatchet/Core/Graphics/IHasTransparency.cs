@@ -2,6 +2,6 @@
 {
     public interface IHasTransparency
     {
-        float Alpha { get; }
+        float Alpha { get; set;  }
     }
 }

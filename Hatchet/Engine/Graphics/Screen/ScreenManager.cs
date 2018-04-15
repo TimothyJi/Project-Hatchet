@@ -20,20 +20,24 @@ namespace Hatchet.Graphics.Screen
             Transitioning
         }
 
+        public ScreenManager()
+        {
+
+        }
+
         public ScreenManager(IScreen screen)
         {
-            Screen = screen;
-            Screen.Initialize();
-            Screen.LoadContent(Content);
+            SetScreen(screen);
         }
 
         public bool SetScreen(IScreen screen)
         {
-            if (State == ScreenManagerStates.Transitioning | Screen != screen)
+            if (State == ScreenManagerStates.Transitioning)
                 return false;
 
             NewScreen = screen;
-            Screen.State = ScreenStates.TransitioningOut;
+            if (Screen != null)
+                Screen.State = ScreenStates.TransitioningOut;
             State = ScreenManagerStates.Transitioning;
             return true;
         }
@@ -42,7 +46,7 @@ namespace Hatchet.Graphics.Screen
         {
             if (State == ScreenManagerStates.Transitioning)
             {
-                if (Screen.State == ScreenStates.Unloaded)
+                if (Screen == null || Screen.State == ScreenStates.Unloaded)
                 {
                     Screen = NewScreen;
                     NewScreen = null;
@@ -55,13 +59,14 @@ namespace Hatchet.Graphics.Screen
                     State = ScreenManagerStates.Normal;
                 }
             }
-
-            Screen.Update(gameTime);
+            if (Screen != null)
+                Screen.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Screen.Draw(spriteBatch);
+            if (Screen != null)
+                Screen.Draw(spriteBatch);
         }
 
         public void LoadContent(ContentManager content)
