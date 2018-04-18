@@ -27,7 +27,7 @@ namespace Hatchet.Graphics.Screen.Presets
             this.nextScreen = nextScreen;
 
             image = new FullImage();
-            image.Initialize(texture, Global.Window, Global.Viewport, true);
+            image.Initialize(texture, true, 1f);
             timeKeeper = new TimeKeeper();
         }
         
@@ -50,8 +50,10 @@ namespace Hatchet.Graphics.Screen.Presets
             var texture = Content.Load<Texture2D>(imagePath);
             if (imagePath != null)
             {
-                image.Initialize(texture, Global.Window, Global.Viewport, true);
+                image.Initialize(texture, true, 1f);
             }
+
+            image.Alpha = 0f;
         }
         
         public override void Update(GameTime gameTime)
@@ -67,7 +69,10 @@ namespace Hatchet.Graphics.Screen.Presets
                     case ScreenStates.TransitioningIn:
                         image.Alpha = MathHelper.Min(timeKeeper.AsSeconds / transitionInTime, 1);
                         if (image.Alpha == 1)
+                        {
                             State = ScreenStates.Active;
+                            timeKeeper.AsSeconds -= transitionInTime;
+                        }
                         break;
                     case ScreenStates.Active:
                         DoIfActive(gameTime);
@@ -75,7 +80,10 @@ namespace Hatchet.Graphics.Screen.Presets
                     case ScreenStates.TransitioningOut:
                         image.Alpha = 1f - MathHelper.Min((timeKeeper.AsSeconds - (displayDuration + transitionInTime)) / transitionOutTime, 1);
                         if (image.Alpha == 0)
+                        {
                             State = ScreenStates.Unloaded;
+                            timeKeeper.AsSeconds -= transitionInTime;
+                        }
                         break;
                 }
             }
@@ -83,8 +91,11 @@ namespace Hatchet.Graphics.Screen.Presets
 
         public virtual void DoIfActive(GameTime gameTime)
         {
-            if (timeKeeper.AsSeconds > transitionInTime + displayDuration)
+            if (timeKeeper.AsSeconds > displayDuration)
+            {
                 ScreenManager.SetScreen(nextScreen);
+                timeKeeper.AsSeconds -= displayDuration;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
