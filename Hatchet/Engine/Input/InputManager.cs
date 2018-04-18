@@ -3,87 +3,86 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Hatchet.Input
 {
-    public struct InputManager : IInputManager
+    public class InputManager<TInputState>
     {
-        public GenericInputManager<KeyboardState> Keyboard { get; private set; }
-        IGenericInputManager<KeyboardState> IInputManager.Keyboard => Keyboard;
+        public static TInputState PreviousState { get; set; }
+        public static TInputState State { get; set; }
 
-        public GenericInputManager<MouseState> Mouse { get; private set; }
-        IGenericInputManager<MouseState> IInputManager.Mouse => Mouse;
-
-        public void Update(KeyboardState keyboardState, MouseState mouseState)
+        public static void Update(TInputState newState)
         {
-            Keyboard.Update(keyboardState);
-            Mouse.Update(mouseState);
+            PreviousState = State;
+            State = newState;
         }
     }
 
-    public static class InputManagerExtensions
+    public static class InputManager_KeyboardState_Extensions
     {
-        public static bool IsHeld(this IGenericInputManager<KeyboardState> k, Keys key) => k.State.IsKeyDown(key);
-        public static bool JustPressed(this IGenericInputManager<KeyboardState> k, Keys key) => k.PreviousState.IsKeyUp(key) && k.State.IsKeyDown(key);
-        public static bool JustReleased(this IGenericInputManager<KeyboardState> k, Keys key) => k.PreviousState.IsKeyDown(key) && k.State.IsKeyUp(key);
-
-        public static bool IsPressed(this IGenericInputManager<MouseState> m, MouseInput input)
+        public static bool IsHeld(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.State.IsKeyDown(key);
+        public static bool JustPressed(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyUp(key) && InputManager<KeyboardState>.State.IsKeyDown(key);
+        public static bool JustReleased(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyDown(key) && InputManager<KeyboardState>.State.IsKeyUp(key);
+    }
+    
+    public static class InputManager_MouseState_Extensions {
+        public static bool IsPressed(this InputManager<MouseState> i, MouseInput input)
         {
             switch (input)
             {
                 case MouseInput.LeftButton:
-                    return m.State.LeftButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.LeftButton == ButtonState.Pressed;
                 case MouseInput.MiddleButton:
-                    return m.State.MiddleButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.MiddleButton == ButtonState.Pressed;
                 case MouseInput.RightButton:
-                    return m.State.RightButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.RightButton == ButtonState.Pressed;
                 case MouseInput.XButton1:
-                    return m.State.XButton1 == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.XButton1 == ButtonState.Pressed;
                 case MouseInput.XButton2:
-                    return m.State.XButton2 == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.XButton2 == ButtonState.Pressed;
 
                 default:
                     return false;
             }
         }
-        public static bool JustPressed(this IGenericInputManager<MouseState> m, MouseInput input)
+        public static bool JustPressed(this InputManager<MouseState> i, MouseInput input)
         {
             switch (input)
             {
                 case MouseInput.LeftButton:
-                    return m.State.LeftButton == ButtonState.Pressed && m.PreviousState.LeftButton == ButtonState.Released;
+                    return InputManager<MouseState>.State.LeftButton == ButtonState.Pressed && InputManager<MouseState>.PreviousState.LeftButton == ButtonState.Released;
                 case MouseInput.MiddleButton:
-                    return m.State.MiddleButton == ButtonState.Pressed && m.PreviousState.MiddleButton == ButtonState.Released;
+                    return InputManager<MouseState>.State.MiddleButton == ButtonState.Pressed && InputManager<MouseState>.PreviousState.MiddleButton == ButtonState.Released;
                 case MouseInput.RightButton:
-                    return m.State.RightButton == ButtonState.Pressed && m.PreviousState.RightButton == ButtonState.Released;
+                    return InputManager<MouseState>.State.RightButton == ButtonState.Pressed && InputManager<MouseState>.PreviousState.RightButton == ButtonState.Released;
                 case MouseInput.XButton1:
-                    return m.State.XButton1 == ButtonState.Pressed && m.PreviousState.XButton1 == ButtonState.Released;
+                    return InputManager<MouseState>.State.XButton1 == ButtonState.Pressed && InputManager<MouseState>.PreviousState.XButton1 == ButtonState.Released;
                 case MouseInput.XButton2:
-                    return m.State.XButton2 == ButtonState.Pressed && m.PreviousState.XButton2 == ButtonState.Released;
+                    return InputManager<MouseState>.State.XButton2 == ButtonState.Pressed && InputManager<MouseState>.PreviousState.XButton2 == ButtonState.Released;
 
                 default:
                     return false;
             }
         }
-        public static bool JustReleased(this IGenericInputManager<MouseState> m, MouseInput input)
+        public static bool JustReleased(this InputManager<MouseState> i, MouseInput input)
         {
             switch (input)
             {
                 case MouseInput.LeftButton:
-                    return m.State.LeftButton == ButtonState.Released && m.PreviousState.LeftButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.LeftButton == ButtonState.Released && InputManager<MouseState>.PreviousState.LeftButton == ButtonState.Pressed;
                 case MouseInput.MiddleButton:
-                    return m.State.MiddleButton == ButtonState.Released && m.PreviousState.MiddleButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.MiddleButton == ButtonState.Released && InputManager<MouseState>.PreviousState.MiddleButton == ButtonState.Pressed;
                 case MouseInput.RightButton:
-                    return m.State.RightButton == ButtonState.Released && m.PreviousState.RightButton == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.RightButton == ButtonState.Released && InputManager<MouseState>.PreviousState.RightButton == ButtonState.Pressed;
                 case MouseInput.XButton1:
-                    return m.State.XButton1 == ButtonState.Released && m.PreviousState.XButton1 == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.XButton1 == ButtonState.Released && InputManager<MouseState>.PreviousState.XButton1 == ButtonState.Pressed;
                 case MouseInput.XButton2:
-                    return m.State.XButton2 == ButtonState.Released && m.PreviousState.XButton2 == ButtonState.Pressed;
+                    return InputManager<MouseState>.State.XButton2 == ButtonState.Released && InputManager<MouseState>.PreviousState.XButton2 == ButtonState.Pressed;
 
                 default:
                     return false;
             }
         }
-        public static Point GetPosition(this IGenericInputManager<MouseState> m) => m.State.Position;
-        public static int GetScroll(this IGenericInputManager<MouseState> m) => m.PreviousState.ScrollWheelValue - m.State.ScrollWheelValue;   
-        public static bool HasMouseMoved(this IGenericInputManager<MouseState> m) => m.PreviousState.Position != m.State.Position;
+        public static Point GetPosition(this InputManager<MouseState> i) => InputManager<MouseState>.State.Position;
+        public static int GetScroll(this InputManager<MouseState> i) => InputManager<MouseState>.PreviousState.ScrollWheelValue - InputManager<MouseState>.State.ScrollWheelValue;
+        public static bool HasMouseMoved(this InputManager<MouseState> i) => InputManager<MouseState>.PreviousState.Position != InputManager<MouseState>.State.Position;
     }
 
     public enum MouseInput

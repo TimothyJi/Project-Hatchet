@@ -4,6 +4,7 @@
     {
         TransitioningIn, // Disable Input.
         Active,
+        Inactive,
         TransitioningOut, // Disable Input
         Unloaded // Disable Input
     }

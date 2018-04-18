@@ -9,15 +9,19 @@ namespace Hatchet.Graphics.Screen
         public ContentManager Content { get; protected set; }
 
         public ScreenStates State { get; set; }
+        public IScreenManager ScreenManager { get; private set; }
 
-        public void Initialize() { }
+        public void Initialize(IScreenManager manager)
+        {
+            this.ScreenManager = manager;
+        }
 
         public virtual void LoadContent(ContentManager content)
         {
             Content = new ContentManager(content.ServiceProvider, "Content");
         }
 
-        public void UnloadContent()
+        public virtual void UnloadContent()
         {
             Content.Unload();
             State = ScreenStates.Unloaded;

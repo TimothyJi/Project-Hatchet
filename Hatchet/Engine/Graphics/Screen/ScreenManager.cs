@@ -5,12 +5,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics.Screen
 {
-    public class ScreenManager : IHasOwnContent
+    public class ScreenManager : IScreenManager
     {
         public IScreen Screen, NewScreen;
         public ScreenManagerStates State;
 
-        public ContentManager Content { get; set; }
+        public ContentManager Content { get; protected set; }
+
+        //private static ScreenManager _instance;
+        //public static ScreenManager Instance { get { if (_instance == null) _instance = new ScreenManager(); return _instance; } }
 
         public enum ScreenManagerStates
         {
@@ -22,24 +25,19 @@ namespace Hatchet.Graphics.Screen
 
         public ScreenManager()
         {
-
         }
 
         public ScreenManager(IScreen screen)
         {
             SetScreen(screen);
         }
-
-        public bool SetScreen(IScreen screen)
+        
+        public void SetScreen(IScreen screen)
         {
-            if (State == ScreenManagerStates.Transitioning)
-                return false;
-
             NewScreen = screen;
             if (Screen != null)
                 Screen.State = ScreenStates.TransitioningOut;
             State = ScreenManagerStates.Transitioning;
-            return true;
         }
 
         public void Update(GameTime gameTime)
@@ -50,7 +48,7 @@ namespace Hatchet.Graphics.Screen
                 {
                     Screen = NewScreen;
                     NewScreen = null;
-                    Screen.Initialize();
+                    Screen.Initialize(this);
                     Screen.LoadContent(Content);
                     Screen.State = ScreenStates.TransitioningIn;
                 }

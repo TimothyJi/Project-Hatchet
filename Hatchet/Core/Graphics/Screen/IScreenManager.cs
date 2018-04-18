@@ -4,13 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics.Screen
 {
-    public interface IScreen : IHasOwnContent
+    public interface IScreenManager : IHasOwnContent
     {
-        IScreenManager ScreenManager { get; }
-
-        ScreenStates State { get; set; }
-
-        void Initialize(IScreenManager manager);
+        void SetScreen(IScreen screen);
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }

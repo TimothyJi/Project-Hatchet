@@ -1,19 +1,13 @@
 ﻿namespace Hatchet.Input
 {
-    public struct GenericInputManager<TState> : IGenericInputManager<TState>
+    public class GenericInputManager<TState> : IGenericInputManager<TState>
     {
         public TState PreviousState { get; private set; }
-        private TState state;
-
-        public TState State
-        {
-            get => state;
-            private set
-            { PreviousState = state; state = value; }
-        }
+        public TState State { get; private set; }
 
         public void Update(TState newState)
         {
+            PreviousState = State;
             State = newState;
         }
     }

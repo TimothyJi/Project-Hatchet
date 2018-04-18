@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics
 {
-    public class Sprite : ISprite
+    public class Sprite : IDrawComponent
     {
         public float Alpha { get; set; } = 1f;
 
@@ -21,18 +21,5 @@ namespace Hatchet.Graphics
 
         public bool IsActive { get; set; } = true;
         public bool UseDestinationRectangle { get; set; } = false;
-
-        public virtual void Update(GameTime gameTime)
-        {
-        }
-
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-            if (IsActive)
-                if (UseDestinationRectangle)
-                    spriteBatch.Draw(Texture, DestinationRectangle, SourceRect, Color * Alpha, Rotation, Origin, SpriteEffects, LayerDepth);
-                else
-                    spriteBatch.Draw(Texture, Position, SourceRect, Color * Alpha, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
-        }
     }
 }

@@ -53,8 +53,11 @@
     <Compile Include="Graphics\Animator.cs" />
     <Compile Include="Graphics\Collections\FrameCollection.cs" />
     <Compile Include="Graphics\Frame.cs" />
+    <Compile Include="Graphics\FullImage.cs" />
+    <Compile Include="Graphics\Screen\Presets\SplashScreen.cs" />
     <Compile Include="Graphics\Screen\ScreenBase.cs" />
     <Compile Include="Graphics\HatchetTexture2D.cs" />
+    <Compile Include="HatchetGame.cs" />
     <Compile Include="Input\GenericInputManager.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
