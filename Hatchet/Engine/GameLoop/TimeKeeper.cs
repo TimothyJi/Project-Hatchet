@@ -4,7 +4,7 @@ namespace Hatchet.GameLoop
 {
     public class TimeKeeper : ITimeKeeper
     {
-        public float AsMilliseconds { get; private set; }
+        public float AsMilliseconds { get; set; }
         public float AsSeconds { get => AsMilliseconds / 1000; set => AsMilliseconds = value * 1000; }
         public float AsMinutes { get => AsMilliseconds / 60000; set => AsMilliseconds = value * 60000; }
         public float AsHours { get => AsMilliseconds / 3600000; set => AsMilliseconds = value * 3600000; }

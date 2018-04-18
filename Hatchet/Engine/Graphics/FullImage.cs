@@ -13,10 +13,10 @@ namespace Hatchet.Graphics
         public float Alpha { get; set; } = 1f;
         Color IDrawComponent.Color { get; set; } = Color.White;
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public float Rotation { get; set; }
-        SpriteEffects IDrawComponent.SpriteEffects { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        float IDrawComponent.LayerDepth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public SpriteEffects SpriteEffects { get; set; }
+        public float LayerDepth { get; set; }
 
         public HatchetTexture2D Texture { get; set; }
         IHatchetTexture2D ITextured.Texture { get => Texture; set => Texture = (HatchetTexture2D)value; }
