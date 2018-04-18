@@ -14,9 +14,8 @@ namespace Hatchet.Graphics
             return Animator.Play(animation);
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
             Animator.Update(gameTime);
         }
     }

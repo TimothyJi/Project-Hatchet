@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Hatchet.Input
 {
-    public class InputManager<TInputState>
+    public static class InputManager<TInputState>
     {
         public static TInputState PreviousState { get; set; }
         public static TInputState State { get; set; }
@@ -15,15 +15,14 @@ namespace Hatchet.Input
         }
     }
 
-    public static class InputManager_KeyboardState_Extensions
+    public class InputKeyboard
     {
-        public static bool IsHeld(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.State.IsKeyDown(key);
-        public static bool JustPressed(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyUp(key) && InputManager<KeyboardState>.State.IsKeyDown(key);
-        public static bool JustReleased(this InputManager<KeyboardState> k, Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyDown(key) && InputManager<KeyboardState>.State.IsKeyUp(key);
+        public static bool IsHeld(Keys key) => InputManager<KeyboardState>.State.IsKeyDown(key);
+        public static bool JustPressed(Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyUp(key) && InputManager<KeyboardState>.State.IsKeyDown(key);
+        public static bool JustReleased(Keys key) => InputManager<KeyboardState>.PreviousState.IsKeyDown(key) && InputManager<KeyboardState>.State.IsKeyUp(key);
     }
-    
-    public static class InputManager_MouseState_Extensions {
-        public static bool IsPressed(this InputManager<MouseState> i, MouseInput input)
+    public class InputMouse {
+        public static bool IsPressed(MouseInput input)
         {
             switch (input)
             {
@@ -42,7 +41,7 @@ namespace Hatchet.Input
                     return false;
             }
         }
-        public static bool JustPressed(this InputManager<MouseState> i, MouseInput input)
+        public static bool JustPressed(MouseInput input)
         {
             switch (input)
             {
@@ -61,7 +60,7 @@ namespace Hatchet.Input
                     return false;
             }
         }
-        public static bool JustReleased(this InputManager<MouseState> i, MouseInput input)
+        public static bool JustReleased(MouseInput input)
         {
             switch (input)
             {
@@ -80,9 +79,9 @@ namespace Hatchet.Input
                     return false;
             }
         }
-        public static Point GetPosition(this InputManager<MouseState> i) => InputManager<MouseState>.State.Position;
-        public static int GetScroll(this InputManager<MouseState> i) => InputManager<MouseState>.PreviousState.ScrollWheelValue - InputManager<MouseState>.State.ScrollWheelValue;
-        public static bool HasMouseMoved(this InputManager<MouseState> i) => InputManager<MouseState>.PreviousState.Position != InputManager<MouseState>.State.Position;
+        public static Point GetPosition() => InputManager<MouseState>.State.Position;
+        public static int GetScroll() => InputManager<MouseState>.PreviousState.ScrollWheelValue - InputManager<MouseState>.State.ScrollWheelValue;
+        public static bool HasMouseMoved() => InputManager<MouseState>.PreviousState.Position != InputManager<MouseState>.State.Position;
     }
 
     public enum MouseInput

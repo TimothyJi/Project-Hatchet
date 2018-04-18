@@ -23,9 +23,6 @@ namespace Hatchet
             graphics = new GraphicsDeviceManager(this);
             screenManager = new ScreenManager();
             Content.RootDirectory = "Content";
-
-            Global.Window = Window;
-            Global.GraphicsDevice = GraphicsDevice;
         }
 
         public HatchetGame(string contentRoot)
@@ -38,6 +35,9 @@ namespace Hatchet
         protected override void Initialize()
         {
             base.Initialize();
+
+            Global.Window = Window;
+            Global.GraphicsDevice = GraphicsDevice;
         }
 
         protected override void LoadContent()
@@ -52,22 +52,22 @@ namespace Hatchet
 
         protected override void Update(GameTime gameTime)
         {
+            if (EXIT)
+                Exit();
+
             screenManager.Update(gameTime);
 
             base.Update(gameTime);
         }
 
-        protected void Draw(GameTime gameTime, bool clear)
-        {
-            if (clear)
-                GraphicsDevice.Clear(Color.Transparent);
-
-            base.Draw(gameTime);
-        }
-
         protected override void Draw(GameTime gameTime)
         {
+            screenManager.Draw(spriteBatch);
+
             base.Draw(gameTime);
         }
+
+        private static bool EXIT;
+        public static void ExitApp() => EXIT = true;
     }
 }
