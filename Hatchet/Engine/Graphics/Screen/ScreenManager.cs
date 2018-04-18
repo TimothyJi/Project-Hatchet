@@ -12,9 +12,6 @@ namespace Hatchet.Graphics.Screen
 
         public ContentManager Content { get; protected set; }
 
-        //private static ScreenManager _instance;
-        //public static ScreenManager Instance { get { if (_instance == null) _instance = new ScreenManager(); return _instance; } }
-
         public enum ScreenManagerStates
         {
             Blank,

@@ -18,19 +18,18 @@ namespace Hatchet.Graphics
         SpriteEffects IDrawComponent.SpriteEffects { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         float IDrawComponent.LayerDepth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        public HatchetTexture2D Texture { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public HatchetTexture2D Texture { get; set; }
         IHatchetTexture2D ITextured.Texture { get => Texture; set => Texture = (HatchetTexture2D)value; }
         public Rectangle DestinationRectangle { get; set; } = Rectangle.Empty;
         bool IDrawComponent.UseDestinationRectangle { get => true; set => throw new System.NotImplementedException(); }
-
-        bool preserveAspect;
+        
         Viewport viewport;
         public void Initialize(Texture2D texture, GameWindow window, Viewport viewport, bool preserveAspectRatio)
         {
             this.Texture = texture;
             this.viewport = viewport;
             window.ClientSizeChanged += (object sender, System.EventArgs args) => {
-                if (this.preserveAspect)
+                if (preserveAspectRatio)
                 {
                     float scaleWidth = this.viewport.Width / (float)Texture.Width;
                     float scaleHeight = this.viewport.Height / (float)Texture.Height;
