@@ -57,6 +57,8 @@
     <Compile Include="Graphics\Screen\Presets\SplashScreen.cs" />
     <Compile Include="Graphics\Screen\ScreenBase.cs" />
     <Compile Include="Graphics\HatchetTexture2D.cs" />
+    <Compile Include="Graphics\UI\UIButton.cs" />
+    <Compile Include="Graphics\UI\UIItem.cs" />
     <Compile Include="HatchetGame.cs" />
     <Compile Include="Input\GenericInputManager.cs" />
     <Compile Include="Input\InputManager.cs" />

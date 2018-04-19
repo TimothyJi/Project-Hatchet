@@ -27,9 +27,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Screen\IScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Screen\IScreenManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Screen\ScreenStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\UI\Event\ClickEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\UI\IUIItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\UI\IClickable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\IGenericInputManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\IInputManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IAlternative.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseInput.cs" />
   </ItemGroup>
 </Project>

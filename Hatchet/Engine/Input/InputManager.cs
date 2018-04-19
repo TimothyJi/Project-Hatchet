@@ -83,19 +83,4 @@ namespace Hatchet.Input
         public static int GetScroll() => InputManager<MouseState>.PreviousState.ScrollWheelValue - InputManager<MouseState>.State.ScrollWheelValue;
         public static bool HasMouseMoved() => InputManager<MouseState>.PreviousState.Position != InputManager<MouseState>.State.Position;
     }
-
-    public enum MouseInput
-    {
-        LeftButton,
-        MiddleButton,
-        RightButton,
-        /// <summary>
-        /// Side Button 1
-        /// </summary>
-        XButton1,
-        /// <summary>
-        /// Side Button 2
-        /// </summary>
-        XButton2
-    }
 }
