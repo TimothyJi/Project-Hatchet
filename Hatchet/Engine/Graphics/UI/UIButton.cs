@@ -18,6 +18,16 @@ namespace Hatchet.Graphics.UI
         public Rectangle DisplayArea;
         Vector2 textPosition;
         public override Vector2 Position { get => base.DestinationRectangle.Location.ToVector2(); set => base.DestinationRectangle = new Rectangle(value.ToPoint(), DestinationRectangle.Size); }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="background"></param>
+        /// <param name="font"></param>
+        /// <param name="text"></param>
+        /// <param name="textColor"></param>
+        /// <param name="position"></param>
+        /// <param name="padding">Does nothing as of now.</param>
+        /// <param name="layerDepth"></param>
         public UIButton(Texture2D background, SpriteFont font, string text, Color textColor, Vector2 position, Point padding, float layerDepth) : base(position, layerDepth)
         {
             this.Texture = background;
