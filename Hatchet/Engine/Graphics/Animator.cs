@@ -62,7 +62,7 @@ namespace Hatchet.Graphics
                     CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.Count;
                 else
                 {
-                    CurrentFrameIndex = Math.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.Count);
+                    CurrentFrameIndex = MathHelper.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.Count);
                     if (CurrentFrameIndex >= CurrentAnimation.FrameContainer.Count)
                     {
                         IsPlaying = false;
