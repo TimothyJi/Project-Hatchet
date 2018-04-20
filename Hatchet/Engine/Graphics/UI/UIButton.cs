@@ -13,6 +13,8 @@ namespace Hatchet.Graphics.UI
         SpriteFont font;
         public Color TextColor { get; set; }
 
+        RenderTarget2D renderTarget;
+
         public override Vector2 Position { get => base.DestinationRectangle.Location.ToVector2(); set => base.DestinationRectangle = new Rectangle(value.ToPoint(), DestinationRectangle.Size); }
         public UIButton(Texture2D background, SpriteFont font, string text, Color textColor, Point size, Vector2 position, Point padding, float layerDepth) : base(position, layerDepth)
         {
@@ -21,17 +23,13 @@ namespace Hatchet.Graphics.UI
             //this.Padding = padding;
             this.Text = text;
             this.TextColor = textColor;
-
-            if (size != null)
-            {
+            
+            if (size != Point.Zero)
                 UseDestinationRectangle = true;
-                DestinationRectangle = new Rectangle(position.ToPoint(), size);
-            } else
-            {
-                DestinationRectangle = new Rectangle(position.ToPoint(), Point.Zero);
-            }
+            DestinationRectangle = new Rectangle(position.ToPoint(), size);
 
             fontMeasure = font.MeasureString(Text);
+            renderTarget = new RenderTarget2D(Global.GraphicsDevice, (int)MathHelper.Max(fontMeasure.X, background.Width), (int)MathHelper.Min(fontMeasure.Y, background.Height));
         }
 
         public event Event.ClickEvent OnClick;
