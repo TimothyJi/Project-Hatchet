@@ -1,5 +1,4 @@
 ﻿using Hatchet.GameLoop;
-using Hatchet.Graphics.Collections;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -9,13 +8,18 @@ namespace Hatchet.Graphics
     {
         public IAnimation CurrentAnimation { get; private set; }
 
-        public int CurrentFrameIndex { get; private set; }
-        public IFrame CurrentFrame => ((FrameCollection)(CurrentAnimation.FrameContainer))[CurrentFrameIndex];
+        public int CurrentFrameIndex { get; private set; } = 0;
+        public IFrame CurrentFrame => CurrentAnimation.Frames[CurrentFrameIndex];
 
         public bool IsPlaying { get; private set; }
 
         public TimeKeeper TimeElapsed { get; private set; }
         ITimeKeeper IAnimator.TimeElapsed => TimeElapsed;
+
+        public Animator()
+        {
+            TimeElapsed = new TimeKeeper();
+        }
 
         public bool Play(IAnimation animation)
         {
@@ -23,7 +27,7 @@ namespace Hatchet.Graphics
                 CurrentAnimation = animation ?? throw new ArgumentNullException();
             else
                 return false;
-            if (animation.FrameContainer == null)
+            if (animation.Frames == null)
                 throw new NullReferenceException("Frames are null.");
 
             return Reset();
@@ -59,11 +63,11 @@ namespace Hatchet.Graphics
                 TimeElapsed.AsSeconds -= CurrentFrame.Duration;
 
                 if (CurrentAnimation.Loop)
-                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.FrameContainer.Count;
+                    CurrentFrameIndex = (CurrentFrameIndex + 1) % CurrentAnimation.Frames.Count;
                 else
                 {
-                    CurrentFrameIndex = MathHelper.Min(CurrentFrameIndex, CurrentAnimation.FrameContainer.Count);
-                    if (CurrentFrameIndex >= CurrentAnimation.FrameContainer.Count)
+                    CurrentFrameIndex = MathHelper.Min(CurrentFrameIndex, CurrentAnimation.Frames.Count);
+                    if (CurrentFrameIndex >= CurrentAnimation.Frames.Count)
                     {
                         IsPlaying = false;
                         break;

@@ -3,6 +3,7 @@ using Hatchet.Graphics.Collections;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Hatchet.UnitTest.Engine.Graphics
@@ -68,29 +69,24 @@ namespace Hatchet.UnitTest.Engine.Graphics
         public static IAnimation emptyAnimation;
         public static IAnimation EmptyAnimation { get { if (emptyAnimation == null) emptyAnimation = new MockAnimation(); return emptyAnimation; } }
         static IAnimation basicAnimation;
-        public static IAnimation BasicAnimation { get { if (basicAnimation == null) basicAnimation = new MockAnimation() { FrameContainer = ToFrameContainer(new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 1f } }) }; return basicAnimation; } }
+        public static IAnimation BasicAnimation { get { if (basicAnimation == null) basicAnimation = new MockAnimation() { Frames = ToList(new IFrame[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 1f } }) }; return basicAnimation; } }
         static IAnimation alternativeAnimation;
-        public static IAnimation AlternativeAnimation { get { if (alternativeAnimation == null) alternativeAnimation = new MockAnimation() { FrameContainer = ToFrameContainer(new IFrameBase[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 0.5f } }), Loop = true }; return alternativeAnimation; } }
+        public static IAnimation AlternativeAnimation { get { if (alternativeAnimation == null) alternativeAnimation = new MockAnimation() { Frames = ToList(new IFrame[] { new MockFrame() { SourceRect = Rectangle.Empty, Duration = 0.5f } }), Loop = true }; return alternativeAnimation; } }
         
-        public static IFrameCollection ToFrameContainer(IFrameBase[] frameArray)
+        public static List<IFrame> ToList(IFrame[] frameArray)
         {
-            IFrameCollection container = new FrameCollection();
-            foreach (var frame in frameArray)
-            {
-                container.Add(new Hatchet.Graphics.XML.Frame(null, frame.SourceRect, frame.Duration));
-            }
-            return container;
+            return new List<IFrame>(frameArray);
         }
     }
 
     public class MockAnimation : IAnimation
     {
-        public IFrameCollection FrameContainer { get; set; }
+        public List<IFrame> Frames { get; set; }
 
         public bool Loop { get; set; }
     }
 
-    public class MockFrame : IFrameBase
+    public class MockFrame : IFrame
     {
         public Rectangle SourceRect { get; set; }
         public float Duration { get; set; }

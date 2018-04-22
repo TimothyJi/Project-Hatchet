@@ -9,7 +9,7 @@ namespace Hatchet.Graphics
         protected Vector2 _origin { get; set; }
         Vector2 IPositionable.Origin { get => _origin; set => throw new System.NotImplementedException(); }
         Vector2 IScalable.Scale { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        Rectangle? IDrawComponent.SourceRect { get => null; set => throw new System.NotImplementedException(); }
+        Rectangle IHasSourceRect.SourceRect { get => Rectangle.Empty; set => throw new System.NotImplementedException(); }
         public float Alpha { get; set; } = 1f;
         Color IDrawComponent.Color { get; set; } = Color.White;
 

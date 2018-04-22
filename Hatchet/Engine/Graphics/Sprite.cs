@@ -11,7 +11,7 @@ namespace Hatchet.Graphics
         public virtual HatchetTexture2D Texture { get; set; }
         public virtual Rectangle DestinationRectangle { get; set; }
         public virtual Vector2 Position { get => DestinationRectangle.Location.ToVector2(); set => DestinationRectangle = new Rectangle(value.ToPoint(), DestinationRectangle.Size); }
-        public virtual Rectangle? SourceRect { get; set; }
+        public virtual Rectangle SourceRect { get; set; } = Rectangle.Empty;
         public virtual Color Color { get; set; } = Color.White;
         public virtual float Rotation { get; set; } = 0f;
         public virtual Vector2 Origin { get; set; } = Vector2.Zero;

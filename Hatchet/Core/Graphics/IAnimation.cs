@@ -1,10 +1,10 @@
-﻿using Hatchet.Graphics.Collections;
+﻿using System.Collections.Generic;
 
 namespace Hatchet.Graphics
 {
     public interface IAnimation
     {
-        IFrameCollection FrameContainer { get; }
+        List<IFrame> Frames { get; }
         bool Loop { get; }
     }
 }

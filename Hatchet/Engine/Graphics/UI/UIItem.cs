@@ -7,7 +7,7 @@ namespace Hatchet.Graphics.UI
     {
         public virtual HatchetTexture2D Texture { get; set; }
         IHatchetTexture2D ITextured.Texture { get => Texture; set => Texture = (HatchetTexture2D)value; }
-        public virtual Rectangle? SourceRect { get; set; } = null;
+        public virtual Rectangle SourceRect { get; set; } = Rectangle.Empty;
         public virtual Color Color { get; set; } = Color.White;
         public virtual SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
         public virtual float LayerDepth { get; set; }
