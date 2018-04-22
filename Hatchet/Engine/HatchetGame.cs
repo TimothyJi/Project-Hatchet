@@ -42,6 +42,7 @@ namespace Hatchet
 
         protected override void LoadContent()
         {
+            spriteBatch = spriteBatch ?? new SpriteBatch(GraphicsDevice);
             screenManager.LoadContent(Content);
         }
 
