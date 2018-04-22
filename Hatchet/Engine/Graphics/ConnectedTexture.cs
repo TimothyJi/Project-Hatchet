@@ -6,9 +6,9 @@ namespace Hatchet.Graphics
 {
     public class ConnectedTexture : Sprite
     {
-        Dictionary<ConnectedSides, TexturePart> TextureParts { get; set; }
+        Dictionary<ConnectedSides, SETexturePart> TextureParts { get; set; }
 
-        public ConnectedTexture(HatchetTexture2D texture, Dictionary<ConnectedSides, TexturePart> textureParts)
+        public ConnectedTexture(HatchetTexture2D texture, Dictionary<ConnectedSides, SETexturePart> textureParts)
         {
             Texture = texture;
             TextureParts = textureParts;

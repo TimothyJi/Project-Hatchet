@@ -3,10 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Hatchet.Graphics
 {
-    public interface IDrawComponent : IHasTransparency, ITextured, IPositionable, IRotatable, IScalable, IHasSourceRect
+    public interface IDrawComponent : IHasTransparency, ITextured, IPositionable, IRotatable, IScalable, IHasSourceRect, IHasSpriteEffects
     {
         Color Color { get; set; }
-        SpriteEffects SpriteEffects { get; set; }
         float LayerDepth { get; set; }
 
         bool IsActive { get; set; }

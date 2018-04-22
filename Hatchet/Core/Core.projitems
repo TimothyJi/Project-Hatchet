@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IAnimator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IFrame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IHasSourceRect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IHasSpriteEffects.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IHasTransparency.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IPositionable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IRotatable.cs" />
