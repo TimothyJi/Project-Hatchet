@@ -1,5 +1,4 @@
 ﻿using Hatchet.XML;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 using System.Text;
