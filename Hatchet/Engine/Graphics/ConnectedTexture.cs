@@ -1,14 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace Hatchet.Graphics
 {
     public class ConnectedTexture : Sprite
     {
-        Dictionary<Directions, SETexturePart> TextureParts { get; set; }
+        Dictionary<Directions, ITexturePart> TextureParts { get; set; }
 
-        public ConnectedTexture(HatchetTexture2D texture, Dictionary<Directions, SETexturePart> textureParts)
+        public ConnectedTexture(HatchetTexture2D texture, Dictionary<Directions, ITexturePart> textureParts)
         {
             Texture = texture;
             TextureParts = textureParts;
@@ -16,17 +15,17 @@ namespace Hatchet.Graphics
 
         public void Update(GameTime gameTime, Directions sides)
         {
-            SourceRect = TextureParts.ContainsKey(sides) ? TextureParts[sides].Rectangle : TextureParts[Directions.None].Rectangle;
+            SourceRect = TextureParts.ContainsKey(sides) ? TextureParts[sides].SourceRect : TextureParts[Directions.None].SourceRect;
         }
-    }
 
-    [Flags]
-    public enum Directions
-    {
-        None = 0,
-        Up = 1 << 0,
-        Down = 1 << 1,
-        Left = 1 << 2,
-        Right = 1 << 3
+        public static implicit operator ConnectedTexture(XML.ConnectedTexture xmlVariant)
+        {
+            return new ConnectedTexture(xmlVariant.Texture as HatchetTexture2D, xmlVariant.TextureParts);
+        }
+
+        public static implicit operator XML.ConnectedTexture(ConnectedTexture xmlVariant)
+        {
+            return new XML.ConnectedTexture(xmlVariant.Texture as HatchetTexture2D, xmlVariant.TextureParts);
+        }
     }
 }

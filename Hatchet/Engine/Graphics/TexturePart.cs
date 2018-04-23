@@ -6,5 +6,10 @@ namespace Hatchet.Graphics
     {
         public Rectangle Rectangle { get; set; }
         Rectangle IHasSourceRect.SourceRect { get => Rectangle; set => Rectangle = value; }
+
+        public TexturePart(Rectangle rectangle)
+        {
+            Rectangle = rectangle;
+        }
     }
 }

@@ -34,6 +34,9 @@
     <Reference Include="HatchetCore">
       <HintPath>..\HatchetCore\bin\Release\HatchetCore.dll</HintPath>
     </Reference>
+    <Reference Include="HatchetXML">
+      <HintPath>..\XML\bin\Release\HatchetXML.dll</HintPath>
+    </Reference>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
       <Private>True</Private>
@@ -57,7 +60,6 @@
     <Compile Include="Graphics\Screen\Presets\SplashScreen.cs" />
     <Compile Include="Graphics\Screen\ScreenBase.cs" />
     <Compile Include="Graphics\HatchetTexture2D.cs" />
-    <Compile Include="Graphics\SETexturePart.cs" />
     <Compile Include="Graphics\TexturePart.cs" />
     <Compile Include="Graphics\UI\UIButton.cs" />
     <Compile Include="Graphics\UI\UIItem.cs" />

@@ -22,7 +22,6 @@ namespace Hatchet.UnitTest.Engine.Graphics
             EquallySizedFrameCollection FrameCollection = new EquallySizedFrameCollection() { DefaultDuration = 1, Size = size, DurationOverride = dur, Texture = new MockTexture2D() { Height = 64, Width = 64 } };
 
             FrameCollection.Initialize();
-
             Assert.IsTrue(FrameCollection.Frames[0].Duration == 1f && FrameCollection.Frames[1].Duration == 2f && FrameCollection.Frames[2].Duration == 1f && FrameCollection.Frames.Count == 4);
         }
 
