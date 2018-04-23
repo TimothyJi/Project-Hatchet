@@ -20,7 +20,7 @@ namespace Hatchet.Graphics
 
         public static implicit operator ConnectedTexture(XML.ConnectedTexture xmlVariant)
         {
-            return new ConnectedTexture(xmlVariant.Texture as HatchetTexture2D, xmlVariant.TextureParts);
+            return new ConnectedTexture(xmlVariant.Texture, xmlVariant.TextureParts);
         }
 
         public static implicit operator XML.ConnectedTexture(ConnectedTexture xmlVariant)
